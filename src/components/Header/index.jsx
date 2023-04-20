@@ -1,4 +1,4 @@
-import { Container, Profile} from "./styles";
+import { Container, Profile } from "./styles";
 
 import { MenuMobile } from '../MenuMobile'
 
@@ -7,34 +7,39 @@ import { FiMenu } from 'react-icons/fi';
 import { Input } from '../Input';
 import { useState } from "react";
 
+import { Link } from "react-router-dom";
+
 export const Header = () => {
 
-    const [ menuIsVisible, setMenuIsVisible ] = useState(false)
+    const [menuIsVisible, setMenuIsVisible] = useState(false)
 
-    return(
+    return (
         <Container>
 
             <h2>RocketMovies</h2>
 
-            <FiMenu size={30} onClick={() => setMenuIsVisible(true)}/>
+            <FiMenu size={30} onClick={() => setMenuIsVisible(true)} />
 
             <MenuMobile
-             menuIsVisible={menuIsVisible}
-             setMenuIsVisible={setMenuIsVisible}
+                menuIsVisible={menuIsVisible}
+                setMenuIsVisible={setMenuIsVisible}
             />
 
             <div className="inputContainer">
 
-             <Input placeholder='Pesquisar pelo titulo'/>
+                <Input placeholder='Pesquisar pelo titulo' />
             </div>
 
             <Profile>
                 <div className="nameAndLogout">
-                    <p>Gabriel Viana</p>
+                    <Link to='/profile'>
+                        <p>Gabriel Viana</p>
+                    </Link>
                     <span>Sair</span>
                 </div>
-
-                <img src="https://github.com/vianagabriel.png" alt="" />
+                <Link to='profile'>
+                 <img src="https://github.com/vianagabriel.png" alt="" />
+                </Link>
             </Profile>
 
         </Container>

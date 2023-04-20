@@ -6,23 +6,28 @@ import { Button } from '../../components/Button';
 
 import { FiArrowLeft, FiUser, FiMail, FiLock, FiCamera } from 'react-icons/fi';
 
+import { Link } from 'react-router-dom';
+
 
 export const Profile = () => {
-  return(
-    <Container>
-        <header>
-            <ButtonText title='Voltar' icon={FiArrowLeft}/>
-        </header>
+    return (
+        <Container>
+            <header>
+                <Link to='/'>
+                    <ButtonText title='Voltar' icon={FiArrowLeft} />
+                </Link>
+            </header>
 
-        <Form>
-            <Avatar>
-            <img src="https://github.com/vianagabriel.png" alt="foto do usuário" />
-            <label htmlFor="avatar">
-                <FiCamera/>
+            <Form>
+                <Avatar>
+                    
+                    <img src="https://github.com/vianagabriel.png" alt="foto do usuário" />
+                    <label htmlFor="avatar">
+                        <FiCamera />
 
-                <input id='avatar'  type='file'/>
-            </label>
-          </Avatar>
+                        <input id='avatar' type='file' />
+                    </label>
+                </Avatar>
                 <Input
                     placeholder='Nome'
                     type='text'
@@ -48,9 +53,9 @@ export const Profile = () => {
                 />
                 <div className="btnContainer">
 
-                 <Button title='Salvar'/>
+                    <Button title='Salvar' />
                 </div>
-           </Form>
-    </Container>
-  )
+            </Form>
+        </Container>
+    )
 };

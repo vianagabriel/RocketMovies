@@ -44,7 +44,7 @@ gap: .9rem;
 
 .nameAndLogout{
     
-    > p{
+    > a{
         color:${({ theme }) => theme.Colors.WHITE_TEXT};
         font-size: 1.4rem;
         font-weight: 700;
@@ -63,10 +63,12 @@ gap: .9rem;
     display: none;
 }
 
- > img{
+ > a {
+  img{
     height: 6.4rem;
     border-radius: 9999px;
  }
+ } 
 
 `;
 

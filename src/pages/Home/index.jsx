@@ -4,6 +4,8 @@ import { Note } from '../../components/Note';
 
 import { FiPlus } from 'react-icons/fi';
 
+import { Link } from "react-router-dom";
+
 import { Container, Main } from "./styles";
 
 export const Home = () => {
@@ -15,9 +17,9 @@ export const Home = () => {
                 <header>
                     <h2>Meus Filmes</h2>
 
-                    <div className="btnContainer">
+                    <Link to='/create' className="btnContainer">
                         <Button title='Adicionar filme' icon={FiPlus} />
-                    </div>
+                    </Link>
                 </header>
 
 
