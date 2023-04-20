@@ -11,6 +11,18 @@ export const Container = styled.div`
   height: 600px;
   overflow-y: auto;
 
+   
+ ::-webkit-scrollbar{
+    width: 8px;
+
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background-color: ${({ theme }) => theme.Colors.PINK};
+    border-radius: 5px;    
+  }
+
+
   @media(min-width: 360px)and (max-width:600px){
       flex-direction: column;
       gap: 3rem;

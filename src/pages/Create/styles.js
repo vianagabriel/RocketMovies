@@ -9,6 +9,16 @@ export const Main = styled.main`
  margin-top: 6.3rem;
  max-height: 500px;
  overflow-y: auto;
+ 
+ ::-webkit-scrollbar{
+    width: 8px;
+
+  }
+
+  ::-webkit-scrollbar-thumb{
+    background-color: ${({ theme }) => theme.Colors.PINK};
+    border-radius: 5px;    
+  }
 
  >h2{
    font-size: 3.6rem;
@@ -24,8 +34,6 @@ export const Main = styled.main`
    @media(min-width: 360px) and (max-width: 600px){
      max-height: none;
    } 
-
-
 
 `;
 
@@ -55,8 +63,6 @@ export const Form = styled.form`
    }
   
  }
-
-
 
 `;
 
