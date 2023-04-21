@@ -5,6 +5,7 @@ import { Button } from '../../components/Button';
 import { FiMail, FiLock, FiUser } from 'react-icons/fi';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { ButtonText } from "../../components/ButtonText";
+import { Link } from "react-router-dom";
 
 export const SignUp= () => {
   return(
@@ -24,8 +25,9 @@ export const SignUp= () => {
 
          <Button  title='Entrar' /> 
         </ButtonContainer>
-
-        <ButtonText title='Volte para o login' icon={AiOutlineArrowLeft}/>
+        <Link to='/'>
+         <ButtonText title='Volte para o login' icon={AiOutlineArrowLeft}/>
+        </Link>
       </Form>
 
       <Background/>
