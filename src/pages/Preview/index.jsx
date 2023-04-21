@@ -7,13 +7,16 @@ import { Tag } from '../../components/Tag';
 
 import { FiArrowLeft } from 'react-icons/fi';
 import { CiClock2 } from 'react-icons/ci';
+import { Link } from "react-router-dom";
 
 export const Preview = () => {
   return (
     <Container>
       <Header />
       <Main>
-        <ButtonText icon={FiArrowLeft} title='Voltar' />
+        <Link to='/'>
+         <ButtonText icon={FiArrowLeft} title='Voltar' />
+        </Link>
         <Title>
           <h2>Interestellar</h2>
           <Ratings rating={4}/>
