@@ -1,9 +1,9 @@
 import { Container } from './styles';
 
 
-export const ButtonText = ({ title, icon: Icon }) => {
+export const ButtonText = ({ title, icon: Icon , ...rest}) => {
     return (
-        <Container>
+        <Container type='button' {...rest}>
             {Icon && <Icon size={20} />}
             {title}
         </Container>
