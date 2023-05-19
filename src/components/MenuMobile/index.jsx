@@ -3,8 +3,10 @@ import { Container, Profile } from "./styles";
 import { Input } from "../Input";
 
 import { AiOutlineClose } from 'react-icons/ai';
+import { useAuth } from "../../hooks/auth";
 
 export const MenuMobile = ({ menuIsVisible, setMenuIsVisible }) => {
+  const { signOut } = useAuth();
   return(
     <Container menuIsVisible={menuIsVisible}>
       <AiOutlineClose size={30} onClick={() => setMenuIsVisible(false)}/>
@@ -19,7 +21,7 @@ export const MenuMobile = ({ menuIsVisible, setMenuIsVisible }) => {
          <Input  placeholder='Pesquisar pelo titulo'/>
         </div>
 
-       <span>Sair</span>
+       <span onClick={signOut}>Sair</span>
       
 
 

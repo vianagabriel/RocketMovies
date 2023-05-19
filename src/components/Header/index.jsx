@@ -8,8 +8,13 @@ import { Input } from '../Input';
 import { useState } from "react";
 
 import { Link } from "react-router-dom";
+import { useAuth } from "../../hooks/auth";
+
+
 
 export const Header = () => {
+
+    const { signOut } = useAuth();
 
     const [menuIsVisible, setMenuIsVisible] = useState(false)
 
@@ -35,7 +40,7 @@ export const Header = () => {
                     <Link to='/profile'>
                         <p>Gabriel Viana</p>
                     </Link>
-                    <span>Sair</span>
+                    <span onClick={signOut}>Sair</span>
                 </div>
                 <Link to='profile'>
                  <img src="https://github.com/vianagabriel.png" alt="" />
