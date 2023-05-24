@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled, { css }  from 'styled-components';
 
 
@@ -53,12 +54,12 @@ ${({ menuIsVisible }) => menuIsVisible && css`
 
 
 
-export const Profile = styled.div`
+export const Profile = styled(Link)`
 
 display: flex;
 align-items: center;
 gap: 2rem;
-
+color: ${({ theme }) => theme.Colors.WHITE};
 
  > img{
     height: 6.4rem;

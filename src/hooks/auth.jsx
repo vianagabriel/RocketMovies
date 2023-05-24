@@ -1,6 +1,8 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { api } from '../services/api';
 
+
+
 export const AuthContext = createContext({});
 
 function AuthProvider({ children }){
@@ -27,14 +29,42 @@ function AuthProvider({ children }){
     }
   }
 
-
-
   function signOut(){
     localStorage.removeItem('@rocketmovies:user');
     localStorage.removeItem('@rocketmovies:token');
 
     setData({})
   }
+
+ async function updateProfile({ user, avatarFile}){
+   try {
+
+    if(avatarFile){
+      const fileUploadForm = new FormData()
+
+      fileUploadForm.append('avatar', avatarFile)
+
+      const response = await api.patch('/users/avatar', fileUploadForm)
+      user.avatar = response.data.avatar
+    }
+    
+
+     await api.put('/users', user);
+     
+     localStorage.setItem('@rocketmovies:user', JSON.stringify(user));
+
+     setData({ user, token: data.token });
+
+     alert('Perfil atualizado!')
+
+   } catch (error) {
+    if(error.response){
+      alert(error.response.data.message)
+    }else{
+      alert('Não foi possível atualizar.')
+    }
+   }
+ }
 
   useEffect(() => {
 
@@ -55,6 +85,7 @@ function AuthProvider({ children }){
     <AuthContext.Provider value={{ 
       signIn,
       signOut,
+      updateProfile,
       user: data.user 
     }}>
         {children}

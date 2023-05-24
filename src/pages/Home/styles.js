@@ -5,7 +5,7 @@ export const Container = styled.div`
 `;
 
  export const Main = styled.main`
-  margin-inline: 9rem;
+  margin-inline: 15.5rem;
   margin-top: 5rem;
   max-width: 95%;
   height: 600px;

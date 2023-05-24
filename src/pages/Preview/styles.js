@@ -6,8 +6,11 @@ export const Container = styled.div`
 
  > p {
     text-align: justify;
-
+    
  }
+
+
+
 
 `;
 
@@ -32,6 +35,7 @@ export const Main = styled.main`
   @media(min-width: 360px)and ( max-width: 600px){
     margin-inline: 2rem;
     max-height: none;
+    margin-bottom: 5rem;
   }
 `;
 
@@ -45,6 +49,7 @@ export const Title = styled.div`
 
   @media(min-width: 360px)and ( max-width: 600px){
     flex-direction: column;
+    font-size: 2rem;
   }
 `;
 

@@ -4,14 +4,40 @@ import { Note } from '../../components/Note';
 
 import { FiPlus } from 'react-icons/fi';
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { Container, Main } from "./styles";
+import { useState, useEffect } from "react";
+import { api } from "../../services/api";
+
+
 
 export const Home = () => {
+    const [movies, setMovies] = useState([])
+    const [search, setSearch] = useState('')
+    const navigate = useNavigate();
+
+
+    function handleMovieSearch(e) {
+        setSearch(e.target.value)
+    }
+
+
+    function handlePreview(id){
+        navigate(`/preview/${id}`)
+      }
+
+    useEffect(() => {
+        async function fetchMovies() {
+            const response = await api.get(`/notes?title=${search}`)
+            setMovies(response.data);
+        }
+        fetchMovies()
+    }, [search])
+
     return (
         <Container>
-            <Header />
+            <Header handleMovieSearch={handleMovieSearch} />
 
             <Main>
                 <header>
@@ -23,45 +49,22 @@ export const Home = () => {
                 </header>
 
 
+                {
+                    movies.map((movie) => (
+                      <Note
+                        key={movie.id}
+                        data={{
+                          title: movie.title,
+                          description: movie.description,
+                          rating: movie.rating,
+                          tags: movie.tags,
+                        }}
+                        onClick={() => handlePreview(movie.id) }
+                      />
+                    ))
+                }
 
-                <Note data={{
-                    title: 'Interestellar',
-                    rating: 4,
-                    description: `Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data 
-                    desconhecida.Cooper,
-                    ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um 
-                    fantasma que tenta...`,
-                    tags: [
-                        { id: '1', name: 'ação' },
-                        { id: '2', name: 'Aventura' },
-                    ]
-                }} />
 
-                <Note data={{
-                    title: 'Interestellar',
-                    rating: 4,
-                    description: `Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data 
-                    desconhecida.Cooper,
-                    ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um 
-                    fantasma que tenta...`,
-                    tags: [
-                        { id: '1', name: 'ação' },
-                        { id: '2', name: 'Aventura' },
-                    ]
-                }} />
-
-                <Note data={{
-                    title: 'Interestellar',
-                    rating: 4,
-                    description: `Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data 
-                    desconhecida.Cooper,
-                    ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um 
-                    fantasma que tenta...`,
-                    tags: [
-                        { id: '1', name: 'ação' },
-                        { id: '2', name: 'Aventura' },
-                    ]
-                }} />
             </Main>
         </Container>
     )
